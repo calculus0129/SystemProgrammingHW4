@@ -2,7 +2,9 @@
 #include "heap-allocator.h"
 
 // X have to worry about padding or alignment.
+// X consider.
 
+// Print the 'dump_mem' in width of 16 bytes.
 void dump_mem(const void *mem, size_t len) {
     const char *buffer = mem;
     size_t i;
