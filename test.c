@@ -16,6 +16,12 @@ int tinput(char tname[10]) {
     if(!strcmp(tname, "long")) {
         return LONG;
     }
+    if(!strcmp(tname, "int")) {
+        return INT;
+    }
+    if(!strcmp(tname, "double")) {
+        return DOUBLE;
+    }
     if(!strcmp(tname, "struct")) {
         return STRUCT;
     }
@@ -30,22 +36,27 @@ int main() {
         .addr=calloc(64, 1),
     };
     // tn: type number, dn: data number
-    int tn, dn, i, n;
+    int tn, dn, i, n, r=1;
     void *x=calloc(64<<3, 1);
     void *xin = x;
     xd.address=x;
     char buf[32]="", tname[10];
-    while(1) {
+    while(r) {
         puts("Do you want to allocate data (1) or deallocate data (2) ?");
         scanf("%s", buf);
         switch(buf[0]) {
-            default:
             case '1':
                 puts("Input the type of data you want to allocate and the name of the data");
                 scanf("%s", tname);
                 tn = tinput(tname);
                 scanf("%s", xd.name);
                 xd.size=tsize(tn);
+                // Checking Invalid type name
+                if(tn==-1) {
+                    perror("Please input a valid type name!\n");
+                    perror("e.g. int, short, char, float, long, double, struct\n\n");
+                    break;
+                }
                 puts("Please input a value for the data type");
                 switch(tn) {
                     case SHORT:
@@ -60,11 +71,18 @@ int main() {
                     case LONG:
                         scanf("%ld", (long*)x);
                         break;
+                    case INT:
+                        scanf("%d", (int*)x);
+                        break;
+                    case DOUBLE:
+                        scanf("%lf", (double*)x);
+                        break;
                     case STRUCT:
                         puts("How many data should be in the struct");
                         scanf("%d", &n);
                         if(n>64) {
-                            //...
+                            puts("TOO many data for 64 bytes");
+                            xd.size=0;
                         }
                         puts("Please input each type and its value");
                         xin=x;
@@ -83,6 +101,12 @@ int main() {
                                     break;
                                 case LONG:
                                     scanf("%ld", (long*)xin);
+                                    break;
+                                case INT:
+                                    scanf("%d", (int*)xin);
+                                    break;
+                                case DOUBLE:
+                                    scanf("%lf", (double*)xin);
                                     break;
                             }
                             xin = (char*)xin + tsize(tn);
@@ -108,6 +132,10 @@ int main() {
                 else {
                     perror("ValueError: Cannot find the name in data list\n");
                 }
+                break;
+            default:
+                r=0;
+                puts("Good Bye!");
                 break;
         }
     }

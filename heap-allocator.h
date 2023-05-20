@@ -11,6 +11,8 @@ typedef enum {
     CHAR,
     FLOAT,
     LONG,
+    INT,
+    DOUBLE,
     STRUCT,
 } type;
 

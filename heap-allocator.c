@@ -30,6 +30,10 @@ size_t tsize(type t) {
             return sizeof(float);
         case LONG:
             return sizeof(long);
+        case INT:
+            return sizeof(int);
+        case DOUBLE:
+            return sizeof(double);
         case STRUCT: // for now.
             return 0;
     }
