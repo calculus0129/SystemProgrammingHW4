@@ -5,6 +5,12 @@
 int main() {
     puts("Hello World!");
     short x = 32023;
+    char name[20] = "name";
+    data xd = {
+        .address = &x,
+        .size = sizeof x,
+        .name = name,
+    };
     //dump_mem(&x, sizeof(x));
     double pi = 3.14159296535897932384626433832795;
     //dump_mem(&pi, sizeof(pi));
@@ -18,7 +24,7 @@ int main() {
     heap dump={
         .size=64,
         .pos = 0,
-        .address=calloc(64, 1),
+        .addr=calloc(64, 1),
     };
     /*
     // Allocate 64 bytes of memory from heap
@@ -27,7 +33,7 @@ int main() {
     *((short*)(dump+n)) = 1231; n+=2; // 1231
     *((short*)(dump+n)) = x; n+=2; // 32023
     */
-    push(&dump, &x, sizeof(x));
+    push(&dump, &xd);
     print(&dump);
 
     //dump_mem(dump, 64);

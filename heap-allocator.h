@@ -20,18 +20,19 @@ typedef enum {
 size_t tsize(type);
 
 typedef struct {
-    size_t size;
     void* address;
+    size_t size;
+    char name[20];
 } data;
 
 typedef struct {
     size_t size;
     size_t pos;
-    void* address;
+    void* addr;
 } heap;
 
 void print(heap* h);
-void push(heap* h, const void* x, size_t siz);
+void push(heap* h, const data *);
 
 //data push(const void *dump, size_t len, )
 

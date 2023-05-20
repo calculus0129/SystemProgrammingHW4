@@ -37,15 +37,15 @@ void push(heap *h, void dat) {
 
 }*/
 
-void push(heap* h, const void* x, size_t siz) {
-    size_t size = h->size, pos = h->pos;
+void push(heap* h, const data * dat) {
+    size_t size = h->size, pos = h->pos, siz=dat->size;
     //printf("%ld\n", siz);
     if(pos+siz>size) {
         printf("There is not enough memory for the data which you require, you can only use %ld byte(s)\n", size-pos);
         return;
     }
-    const char *buffer = x;
-    char *write = pos+(char*)(h->address);
+    const char *buffer = dat->address;
+    char *write = pos+(char*)(h->addr);
     size_t i;
 
     for(i=0;i<siz;++i) {
@@ -55,5 +55,5 @@ void push(heap* h, const void* x, size_t siz) {
 };
 
 void print(heap* h) {
-    dump_mem(h->address, h->size);
+    dump_mem(h->addr, h->size);
 }
