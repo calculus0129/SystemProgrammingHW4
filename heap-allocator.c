@@ -16,7 +16,7 @@ void dump_mem(const void *mem, size_t len) {
     }
     puts("");
 }
-/*
+
 size_t tsize(type t) {
     switch(t) {
         default:
@@ -33,10 +33,6 @@ size_t tsize(type t) {
     }
 }
 
-void push(heap *h, void dat) {
-
-}*/
-
 void push(heap* h, const data * dat) {
     size_t size = h->size, pos = h->pos, siz=dat->size;
     //printf("%ld\n", siz);
@@ -51,7 +47,7 @@ void push(heap* h, const data * dat) {
     for(i=0;i<siz;++i) {
         write[i] = buffer[i] & 0xff;
     }
-    pos+=siz;
+    h->pos+=siz;
 };
 
 void print(heap* h) {

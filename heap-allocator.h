@@ -26,8 +26,11 @@ typedef struct {
 } data;
 
 typedef struct {
+    // size: the current bytes of memory allocated.
     size_t size;
+    // pos: the current byte position of the end of memory.
     size_t pos;
+    // addr: the byte address of the start of the heap.
     void* addr;
 } heap;
 
