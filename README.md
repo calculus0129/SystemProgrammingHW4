@@ -16,7 +16,7 @@
 I'll now divide the procedure as follows:
 
 My Homework Plan:
-<span style="color:green;font-weight:700;font-size:20px">
+<span style="font-color:green;font-weight:700;font-size:20px">
 1. Allocate 64 bytes of memory and enable representing a SHORT value.
     1. make a printing function of the ‘dump memory’.
     2. Enable representing a variable with name.
@@ -25,7 +25,7 @@ My Homework Plan:
     1. Enable 'safe' allocation
 4. Output the data (names) I have right now.
 </span>
-<span style="color:black;font-weight:700;font-size:20px">
+<span style="font-color:black;font-weight:700;font-size:20px">
 5. Enable deallocation.
 6. Enable representing a struct.
 7. Additional Features: ‘corner cases’
