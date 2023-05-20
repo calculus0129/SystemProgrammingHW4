@@ -16,7 +16,7 @@
 I'll now divide the procedure as follows:
 
 My Homework Plan:
-<span style="font-color:green;font-weight:700;font-size:20px">
+- ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) 
 1. Allocate 64 bytes of memory and enable representing a SHORT value.
     1. make a printing function of the ‘dump memory’.
     2. Enable representing a variable with name.
@@ -24,8 +24,8 @@ My Homework Plan:
 3. Enable representing many variables of various types.
     1. Enable 'safe' allocation
 4. Output the data (names) I have right now.
-</span>
-<span style="font-color:black;font-weight:700;font-size:20px">
+
+- ![#000000](https://placehold.co/15x15/000000/000000.png) 
 5. Enable deallocation.
 6. Enable representing a struct.
 7. Additional Features: ‘corner cases’
@@ -34,6 +34,6 @@ My Homework Plan:
     3. e.g. Checking invalid type name
     4. e.g. Checking invalid variable name.
     5. e.g. Checking invalid input.
-</span>
+
 
 https://bj25.tistory.com/16
