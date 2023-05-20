@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h> // for explicit calloc and free()
+#include <string.h> // for strcpy()
 #include "heap-allocator.h"
 
 // X have to worry about padding or alignment.
@@ -34,22 +36,47 @@ size_t tsize(type t) {
 }
 
 void push(heap* h, const data * dat) {
-    size_t size = h->size, pos = h->pos, siz=dat->size;
+    size_t size = h->size, pos = h->pos, siz=dat->size, dsize=h->dsize;
     //printf("%ld\n", siz);
+    
+    // Checking Safety for allocation
     if(pos+siz>size) {
         printf("There is not enough memory for the data which you require, you can only use %ld byte(s)\n", size-pos);
         return;
     }
-    const char *buffer = dat->address;
-    char *write = pos+(char*)(h->addr);
+    // Extend The dynamic array darr of *h:
+    // 1. move all the data to dar with dynamic memories.
+    // 2. move address of dar to h->darr.
+    data* dar = calloc(dsize+1, sizeof(data));
     size_t i;
-
+    for(i=0;i<dsize;++i) {
+        dar[i] = h->darr[i];
+    }
+    free(h->darr);
+    // Determine fields of the last element of darr.
+    char *write = dar[dsize].address = pos+(char*)(h->addr);
+    dar[dsize].size = siz;
+    strcpy(dar[dsize].name,dat->name);
+    
+    // Now, write the bytes of dat on the heap h.
+    const char *buffer = dat->address;
     for(i=0;i<siz;++i) {
         write[i] = buffer[i] & 0xff;
     }
+
+    // Modify the byte position of h.
     h->pos+=siz;
+    // Give address of dar to h->darr.
+    h->darr = dar;
+    // Increase the dsize too.
+    h->dsize++;
 };
 
 void print(heap* h) {
     dump_mem(h->addr, h->size);
+    puts("------Data you have now------");
+    for(size_t i=0,e=h->dsize;i<e;++i) {
+        puts(h->darr[i].name);
+        //printf("") // Print additional info of data.
+    }
 }

@@ -32,11 +32,16 @@ typedef struct {
     size_t pos;
     // addr: the byte address of the start of the heap.
     void* addr;
+    // dsize: the size of the data array darr.
+    size_t dsize;
+    // darr: the darr.
+    data* darr;
 } heap;
 
+// print the heap information.
 void print(heap* h);
-void push(heap* h, const data *);
 
-//data push(const void *dump, size_t len, )
+// push a 'data' to the heap.
+void push(heap* h, const data *);
 
 #endif

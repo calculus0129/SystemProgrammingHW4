@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <string.h> // for strcpy()
 #include "heap-allocator.h"
 
 int tinput() {
@@ -46,8 +46,6 @@ int main() {
                 tn = tinput();
                 scanf("%s", xd.name);
                 xd.size=tsize(tn);
-                //free(x);
-                //x = calloc(1, xd.size);
                 puts("Please input a value for the data type");
                 switch(tn) {
                     case SHORT:
