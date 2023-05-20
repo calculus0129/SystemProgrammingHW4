@@ -71,32 +71,11 @@ int main() {
                 print(&dump);
                 break;
             case '2':
+                pop(&dump, 1);
+                print(&dump);
                 break;
         }
     }
-    /*
-    data xd = {
-        .address = &x,
-        .size = sizeof x,
-        .name = name,
-    };*/
-    //dump_mem(&x, sizeof(x));
-    //double pi = 3.14159296535897932384626433832795;
-    //dump_mem(&pi, sizeof(pi));
-    //dump_mem(dump, 64);
-    /*
-    // Allocate 64 bytes of memory from heap
-    char *dump = calloc(64, 1);
-    *(dump+n) = x; n+=2; // 32023 ..?
-    *((short*)(dump+n)) = 1231; n+=2; // 1231
-    *((short*)(dump+n)) = x; n+=2; // 32023
-    */
-    
-    //push(&dump, &xd);
-    //print(&dump);
-
-    //dump_mem(dump, 64);
-    
     free(x);
 
     return 0;

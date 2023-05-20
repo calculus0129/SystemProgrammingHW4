@@ -80,3 +80,24 @@ void print(heap* h) {
         //printf("") // Print additional info of data.
     }
 }
+
+void pop(heap* h, const size_t idx) {
+    // pop the data out of darr first.
+    size_t i, e;
+    // pd: popped data
+    data pd = h->darr[idx];
+    size_t size = pd.size;
+    for(i=idx,e=h->dsize-1;i<e;++i) {
+        h->darr[i]=h->darr[i+1];
+    }
+    // pop in the memory.
+    for(i=(char*)pd.address-(char*)h->addr,e=h->pos-size;i<e;++i) {
+        ((char*)h->addr)[i] = ((char*)h->addr)[i+size];
+    }
+    for(i=e,e=h->pos;i<e;++i) {
+        ((char*)h->addr)[i] = '\0';
+    }
+    // Change attributes of h.
+    h->pos -= size;
+    h->dsize--;
+}

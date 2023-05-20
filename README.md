@@ -24,9 +24,10 @@ My Homework Plan:
 3. Enable representing many variables of various types.
     1. Enable 'safe' allocation
 4. Output the data (names) I have right now.
-
-- ![#000000](https://placehold.co/15x15/000000/000000.png) 
 5. Enable deallocation.
+    1. Code the deallocation of data of a given index of darr of a heap.
+- ![#000000](https://placehold.co/15x15/000000/000000.png) 
+    2. Search the index of a data given its name.
 6. Enable representing a struct.
 7. Additional Features: ‘corner cases’
     1. e.g. enable other types (e.g. int, double, etc.)

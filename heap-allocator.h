@@ -44,4 +44,7 @@ void print(heap* h);
 // push a 'data' to the heap.
 void push(heap* h, const data *);
 
+// pop a data of heap at a given index.
+void pop(heap* h, const size_t idx);
+
 #endif
