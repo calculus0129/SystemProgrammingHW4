@@ -16,7 +16,7 @@
 I'll now divide the procedure as follows:
 
 My Homework Plan:
-- ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) 
+- ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) 'Succeeded'
 1. Allocate 64 bytes of memory and enable representing a SHORT value.
     1. make a printing function of the ‘dump memory’.
     2. Enable representing a variable with name.
@@ -26,14 +26,14 @@ My Homework Plan:
 4. Output the data (names) I have right now.
 5. Enable deallocation.
     1. Code the deallocation of data of a given index of darr of a heap.
-- ![#000000](https://placehold.co/15x15/000000/000000.png) 
-    2. Search the index of a data given its name.
+    2. Search the index of a data given its name through the darr of a heap.
+- ![#000000](https://placehold.co/15x15/000000/000000.png) 'Necessary'
 6. Enable representing a struct.
 7. Additional Features: ‘corner cases’
     1. e.g. enable other types (e.g. int, double, etc.)
     2. e.g. handling allocation of data with already allocated name.
     3. e.g. Checking invalid type name
-    4. e.g. Checking invalid variable name.
+    4. e.g. Checking invalid variable name. (Succeeded)
     5. e.g. Checking invalid input.
 
 

@@ -31,8 +31,8 @@ int main() {
         .pos = 0,
         .addr=calloc(64, 1),
     };
-    // tn: type number
-    int tn;
+    // tn: type number, dn: data number
+    int tn, dn;
     void *x=calloc(16, 1);
     xd.address=x;
     char buf[32]="";
@@ -71,8 +71,17 @@ int main() {
                 print(&dump);
                 break;
             case '2':
-                pop(&dump, 1);
-                print(&dump);
+                puts("Input the name of data you want to deallocate");
+                scanf("%s", buf);
+                dn = search(&dump, buf);
+                if(dn>=0) {
+                    pop(&dump, dn);
+                    printf("%s has been deallocated\n", buf);
+                    print(&dump);
+                }
+                else {
+                    perror("ValueError: Cannot find the name in data list\n");
+                }
                 break;
         }
     }

@@ -47,4 +47,7 @@ void push(heap* h, const data *);
 // pop a data of heap at a given index.
 void pop(heap* h, const size_t idx);
 
+// search the index of a data given its name.
+int search(const heap* h, const char * name);
+
 #endif

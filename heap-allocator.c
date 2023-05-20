@@ -89,6 +89,7 @@ void pop(heap* h, const size_t idx) {
     size_t size = pd.size;
     for(i=idx,e=h->dsize-1;i<e;++i) {
         h->darr[i]=h->darr[i+1];
+        h->darr[i].address = (char*)h->darr[i].address - size;
     }
     // pop in the memory.
     for(i=(char*)pd.address-(char*)h->addr,e=h->pos-size;i<e;++i) {
@@ -100,4 +101,12 @@ void pop(heap* h, const size_t idx) {
     // Change attributes of h.
     h->pos -= size;
     h->dsize--;
+}
+
+int search(const heap* h, const char * name) {
+    int i=0,e=h->dsize;
+    for(;i<e;++i) {
+        if(!strcmp(h->darr[i].name, name)) return i;
+    }
+    return -1;
 }
