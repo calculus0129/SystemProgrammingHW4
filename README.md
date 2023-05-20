@@ -27,8 +27,8 @@ My Homework Plan:
 5. Enable deallocation.
     1. Code the deallocation of data of a given index of darr of a heap.
     2. Search the index of a data given its name through the darr of a heap.
-- ![#000000](https://placehold.co/15x15/000000/000000.png) 'Necessary'
 6. Enable representing a struct.
+- ![#000000](https://placehold.co/15x15/000000/000000.png) 'Necessary'
 7. Additional Features: ‘corner cases’
     1. e.g. enable other types (e.g. int, double, etc.)
     2. e.g. handling allocation of data with already allocated name.

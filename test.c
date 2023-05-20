@@ -3,9 +3,7 @@
 #include <string.h> // for strcpy()
 #include "heap-allocator.h"
 
-int tinput() {
-    char tname[10];
-    scanf("%s", tname);
+int tinput(char tname[10]) {
     if(!strcmp(tname, "short")) {
         return SHORT;
     }
@@ -32,10 +30,11 @@ int main() {
         .addr=calloc(64, 1),
     };
     // tn: type number, dn: data number
-    int tn, dn;
-    void *x=calloc(16, 1);
+    int tn, dn, i, n;
+    void *x=calloc(64<<3, 1);
+    void *xin = x;
     xd.address=x;
-    char buf[32]="";
+    char buf[32]="", tname[10];
     while(1) {
         puts("Do you want to allocate data (1) or deallocate data (2) ?");
         scanf("%s", buf);
@@ -43,7 +42,8 @@ int main() {
             default:
             case '1':
                 puts("Input the type of data you want to allocate and the name of the data");
-                tn = tinput();
+                scanf("%s", tname);
+                tn = tinput(tname);
                 scanf("%s", xd.name);
                 xd.size=tsize(tn);
                 puts("Please input a value for the data type");
@@ -61,7 +61,33 @@ int main() {
                         scanf("%ld", (long*)x);
                         break;
                     case STRUCT:
-                        //scanf("%hd", &x);
+                        puts("How many data should be in the struct");
+                        scanf("%d", &n);
+                        if(n>64) {
+                            //...
+                        }
+                        puts("Please input each type and its value");
+                        xin=x;
+                        for(i=0;i<n;++i) {
+                            scanf("%s", tname);
+                            tn = tinput(tname);
+                            switch(tn) {
+                                case SHORT:
+                                    scanf("%hd", (short*)xin);
+                                    break;
+                                case CHAR:
+                                    scanf(" %c", (char*)xin);
+                                    break;
+                                case FLOAT:
+                                    scanf("%f", (float*)xin);
+                                    break;
+                                case LONG:
+                                    scanf("%ld", (long*)xin);
+                                    break;
+                            }
+                            xin = (char*)xin + tsize(tn);
+                            xd.size+=tsize(tn);
+                        }
                         break;
                     default:
                         break;

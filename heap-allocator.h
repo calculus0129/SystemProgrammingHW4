@@ -1,9 +1,6 @@
 #ifndef HEAP_ALLOC_H
 #define HEAP_ALLOC_H
 
-// Maximum number of bytes of allocation.
-#define MAX_ALLOC 64
-
 #ifndef size_t
 #define size_t unsigned long
 #endif
