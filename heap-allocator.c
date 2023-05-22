@@ -77,8 +77,9 @@ void push(heap* h, const data * dat) {
 };
 
 void print(heap* h) {
+    puts("There is memory dump!");
     dump_mem(h->addr, h->size);
-    puts("------Data you have now------");
+    puts("\n------Data you have now------");
     for(size_t i=0,e=h->dsize;i<e;++i) {
         puts(h->darr[i].name);
         //printf("") // Print additional info of data.

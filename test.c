@@ -36,7 +36,7 @@ int main() {
         .addr=calloc(64, 1),
     };
     // tn: type number, dn: data number
-    int tn, dn, i, n, r=1;
+    int tn, dn, i, n, r=1, struct_type_error=0;
     void *x=calloc(64<<3, 1);
     void *xin = x;
     xd.address=x;
@@ -57,24 +57,29 @@ int main() {
                     perror("e.g. int, short, char, float, long, double, struct\n\n");
                     break;
                 }
-                puts("Please input a value for the data type");
                 switch(tn) {
                     case SHORT:
+                        puts("Please input a value for the data type");
                         scanf("%hd", (short*)x);
                         break;
                     case CHAR:
+                        puts("Please input a value for the data type");
                         scanf(" %c", (char*)x);
                         break;
                     case FLOAT:
+                        puts("Please input a value for the data type");
                         scanf("%f", (float*)x);
                         break;
                     case LONG:
+                        puts("Please input a value for the data type");
                         scanf("%ld", (long*)x);
                         break;
                     case INT:
+                        puts("Please input a value for the data type");
                         scanf("%d", (int*)x);
                         break;
                     case DOUBLE:
+                        puts("Please input a value for the data type");
                         scanf("%lf", (double*)x);
                         break;
                     case STRUCT:
@@ -89,35 +94,42 @@ int main() {
                         for(i=0;i<n;++i) {
                             scanf("%s", tname);
                             tn = tinput(tname);
-                            switch(tn) {
-                                case SHORT:
-                                    scanf("%hd", (short*)xin);
-                                    break;
-                                case CHAR:
-                                    scanf(" %c", (char*)xin);
-                                    break;
-                                case FLOAT:
-                                    scanf("%f", (float*)xin);
-                                    break;
-                                case LONG:
-                                    scanf("%ld", (long*)xin);
-                                    break;
-                                case INT:
-                                    scanf("%d", (int*)xin);
-                                    break;
-                                case DOUBLE:
-                                    scanf("%lf", (double*)xin);
-                                    break;
-                            }
+                            do {
+                                struct_type_error=0;
+                                switch(tn) {
+                                    case SHORT:
+                                        scanf("%hd", (short*)xin);
+                                        break;
+                                    case CHAR:
+                                        scanf(" %c", (char*)xin);
+                                        break;
+                                    case FLOAT:
+                                        scanf("%f", (float*)xin);
+                                        break;
+                                    case LONG:
+                                        scanf("%ld", (long*)xin);
+                                        break;
+                                    case INT:
+                                        scanf("%d", (int*)xin);
+                                        break;
+                                    case DOUBLE:
+                                        scanf("%lf", (double*)xin);
+                                        break;
+                                    case -1:
+                                        struct_type_error=1;
+                                        perror("Please input a valid type name!\n");
+                                        perror("e.g. int, short, char, float, long, double, struct\n\n");
+                                        break;
+                                }
+                            } while(struct_type_error);
                             xin = (char*)xin + tsize(tn);
                             xd.size+=tsize(tn);
                         }
                         break;
-                    default:
-                        break;
+                    //default: // Cannot happen
+                    //    break;
                 }
                 push(&dump, &xd);
-                puts("There is memory dump!");
                 print(&dump);
                 break;
             case '2':
