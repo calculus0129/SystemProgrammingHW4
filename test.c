@@ -53,8 +53,8 @@ int main() {
                 xd.size=tsize(tn);
                 // Checking Invalid type name
                 if(tn==-1) {
-                    perror("Please input a valid type name!\n");
-                    perror("e.g. int, short, char, float, long, double, struct\n\n");
+                    printf("Please input a valid type name!\n");
+                    printf("e.g. int, short, char, float, long, double, struct\n\n");
                     break;
                 }
                 switch(tn) {
@@ -117,8 +117,8 @@ int main() {
                                         break;
                                     case -1:
                                         struct_type_error=1;
-                                        perror("Please input a valid type name!\n");
-                                        perror("e.g. int, short, char, float, long, double, struct\n\n");
+                                        printf("Please input a valid type name!\n");
+                                        printf("e.g. int, short, char, float, long, double, struct\n\n");
                                         break;
                                 }
                             } while(struct_type_error);
@@ -142,7 +142,7 @@ int main() {
                     print(&dump);
                 }
                 else {
-                    perror("ValueError: Cannot find the name in data list\n");
+                    printf("ValueError: Cannot find the name in data list\n");
                 }
                 break;
             default:
